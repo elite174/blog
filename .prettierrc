@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "prettier",
+        "prettier/@typescript-eslint",
+        "prettier/react"
+    ],
+    "printWidth": 100,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "none"
+    
+}

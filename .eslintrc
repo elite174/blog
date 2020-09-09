@@ -1,0 +1,17 @@
+{
+    "extends": [
+        "prettier",
+        "prettier/react",
+        "prettier/@typescript-eslint",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:eslint-plugin-import/typescript"
+    ],
+    "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": 0
+    },
+    "plugins": [
+        "emotion",
+        "react",
+        "react-hooks"
+    ]
+}
