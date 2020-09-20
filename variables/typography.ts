@@ -1,3 +1,11 @@
+const mono = `
+    font-family: 'Raleway', sans-serif;
+`;
+
+const serif = `
+    font-family: 'Playfair Display', serif;
+`;
+
 const xxl = `
     font-size: 44px;
     line-height: 150%;
@@ -47,5 +55,9 @@ export const typography = {
     text20,
     text16,
     caption,
-    link
+    link,
+    style: {
+        mono,
+        serif
+    }
 };

@@ -1,25 +1,36 @@
 import React from 'react';
 import { NextPage } from 'next';
-import { Dirent } from 'fs';
-import { GrayMatterFile } from 'gray-matter';
-import { Folder } from '../typings';
+import matter, { GrayMatterFile } from 'gray-matter';
+import fs from 'fs';
+import { v4 as uuid } from 'uuid';
+
+import Page from '../components/common/Page';
+
 import { getFileList } from '../utils';
+import Header from '../components/common/Header';
+import { css } from 'emotion';
 
 interface Props {
     blogs: string[];
 }
 
-const Home: NextPage<Props> = ({ blogs }) => {
-    console.log(blogs);
+const layoutStyles = css`
+    display: flex;
 
-    return <div>hi</div>;
+    height: 100%;
+`;
+
+const Home: NextPage<Props> = () => {
+    return (
+        <Page>
+            <div className={layoutStyles}>
+                <Header />
+            </div>
+        </Page>
+    );
 };
 
 export async function getStaticProps() {
-    const fs = require('fs');
-    const matter = require('gray-matter');
-    const { v4: uuid } = require('uuid');
-
     const files = await getFileList();
 
     const posts = files

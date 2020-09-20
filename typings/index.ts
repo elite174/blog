@@ -12,3 +12,7 @@ export interface PostMeta {
     readonly slug: string;
     readonly folder: Folder;
 }
+
+export interface Post extends PostMeta {
+    readonly content: string;
+}

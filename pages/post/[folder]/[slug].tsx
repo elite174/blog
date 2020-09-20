@@ -5,8 +5,16 @@ import fs from 'fs';
 
 import { getFileList, getFilesData } from '../../../utils';
 
+import { PostMeta, Post } from '../../../typings';
+
 interface Props {
-    blog: any;
+    readonly post: Post | null;
+}
+
+interface ContextParams {
+    readonly folder: string;
+    readonly slug: string;
+    readonly [key: string]: string;
 }
 
 const PostPage: NextPage<Props> = (props) => {
@@ -19,49 +27,45 @@ const PostPage: NextPage<Props> = (props) => {
     );
 };
 
-export const getStaticProps: GetStaticProps<any, { folder: string; slug: string }> = async (
-    context
-) => {
+export const getStaticProps: GetStaticProps<Props, ContextParams> = async (context) => {
     if (!context.params) {
-        return { props: {} };
+        return {
+            props: {
+                post: null
+            }
+        };
     }
 
     const { folder, slug } = context.params;
-    console.log(context);
-
     const path = `${process.cwd()}/posts/${folder}/${slug}.md`;
 
-    // read file content and store into rawContent variable
     const rawContent = fs.readFileSync(path, {
         encoding: 'utf-8'
     });
 
-    const { data, content }: GrayMatterFile<string> = matter(rawContent); // pass rawContent to gray-matter to get data and content
+    const { data, content }: GrayMatterFile<string> = matter(rawContent);
 
     return {
         props: {
-            blog: {
-                ...data,
+            post: {
+                ...(data as PostMeta),
                 content
             }
         }
     };
 };
 
-// generate HTML paths at build time
 export const getStaticPaths = async () => {
     const files = await getFileList();
-    const data = await getFilesData(files);
+    const dataList = await getFilesData(files);
 
     return {
-        paths: data.map((d) => {
-            return {
-                params: {
-                    slug: d.slug,
-                    folder: d.folder
-                }
-            };
-        }),
+        paths: dataList.map(({ slug, folder }) => ({
+            params: {
+                slug,
+                folder
+            }
+        })),
         fallback: false
     };
 };
