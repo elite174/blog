@@ -13,6 +13,6 @@ export interface PostMeta {
     readonly folder: Folder;
 }
 
-export interface Post extends PostMeta {
+export interface PostData extends PostMeta {
     readonly content: string;
 }

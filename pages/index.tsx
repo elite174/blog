@@ -3,16 +3,25 @@ import { NextPage } from 'next';
 import matter, { GrayMatterFile } from 'gray-matter';
 import fs from 'fs';
 import { v4 as uuid } from 'uuid';
+import { css } from 'emotion';
 
 import Page from '../components/common/Page';
 
-import { getFileList } from '../utils';
 import Header from '../components/common/Header';
-import { css } from 'emotion';
+import { PostLayout } from '../layouts/PostLayout';
+
+import { getFileList } from '../utils';
+
+import { PostData, PostMeta } from '../typings';
+import { Post } from '../components/main/Post';
 
 interface Props {
-    blogs: string[];
+    posts: PostData[];
 }
+
+const headerStyles = css`
+    flex-shrink: 0;
+`;
 
 const layoutStyles = css`
     display: flex;
@@ -20,11 +29,22 @@ const layoutStyles = css`
     height: 100%;
 `;
 
-const Home: NextPage<Props> = () => {
+const postLayoutStyles = css`
+    height: 100%;
+    width: 100%;
+`;
+
+const Home: NextPage<Props> = (props) => {
+    console.log(props)
     return (
         <Page>
             <div className={layoutStyles}>
-                <Header />
+                <Header className={headerStyles} />
+                <PostLayout className={postLayoutStyles}>
+                    {props.posts?.map((post) => (
+                        <Post key={post.slug} title={post.title} text={post.content} />
+                    ))}
+                </PostLayout>
             </div>
         </Page>
     );
@@ -33,19 +53,19 @@ const Home: NextPage<Props> = () => {
 export async function getStaticProps() {
     const files = await getFileList();
 
-    const posts = files
+    const posts: PostData[] = files
         .filter((fileName: string) => fileName.endsWith('.md'))
         .map((fileName: string) => {
             const rawContent = fs.readFileSync(fileName, {
                 encoding: 'utf-8'
             });
-            const { data }: GrayMatterFile<string> = matter(rawContent);
+            const { data, content }: GrayMatterFile<string> = matter(rawContent);
 
-            return { ...data, id: uuid() };
+            return { ...(data as PostMeta), content, id: uuid() };
         });
 
     return {
-        props: { blogs: posts }
+        props: { posts }
     };
 }
 

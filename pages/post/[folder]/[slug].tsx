@@ -5,10 +5,10 @@ import fs from 'fs';
 
 import { getFileList, getFilesData } from '../../../utils';
 
-import { PostMeta, Post } from '../../../typings';
+import { PostMeta, PostData } from '../../../typings';
 
 interface Props {
-    readonly post: Post | null;
+    readonly post: PostData | null;
 }
 
 interface ContextParams {
