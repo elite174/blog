@@ -6,8 +6,8 @@ import { ClassNameProps } from '../../typings';
 const layoutStyles = css`
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-rows: repeat(auto-fit, 200px);
     grid-gap: 30px;
 
     padding: 30px;

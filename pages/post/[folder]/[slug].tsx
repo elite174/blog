@@ -3,7 +3,7 @@ import { NextPage, GetStaticProps } from 'next';
 import matter, { GrayMatterFile } from 'gray-matter';
 import fs from 'fs';
 
-import { getFileList, getFilesData } from '../../../utils';
+import { getFileList, getFilesData } from '../../../utils/fileSystem';
 
 import { PostMeta, PostData } from '../../../typings';
 

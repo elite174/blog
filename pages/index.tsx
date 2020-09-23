@@ -10,7 +10,7 @@ import Page from '../components/common/Page';
 import Header from '../components/common/Header';
 import { PostLayout } from '../layouts/PostLayout';
 
-import { getFileList } from '../utils';
+import { getFileList } from '../utils/fileSystem';
 
 import { PostData, PostMeta } from '../typings';
 import { Post } from '../components/main/Post';
@@ -35,14 +35,13 @@ const postLayoutStyles = css`
 `;
 
 const Home: NextPage<Props> = (props) => {
-    console.log(props)
     return (
         <Page>
             <div className={layoutStyles}>
                 <Header className={headerStyles} />
                 <PostLayout className={postLayoutStyles}>
-                    {props.posts?.map((post) => (
-                        <Post key={post.slug} title={post.title} text={post.content} />
+                    {props.posts?.map(({ date, slug, folder, title }) => (
+                        <Post key={slug} meta={{ title, folder, date, slug }} />
                     ))}
                 </PostLayout>
             </div>

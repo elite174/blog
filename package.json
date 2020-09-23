@@ -12,6 +12,7 @@
     "emotion": "^10.0.27",
     "emotion-server": "^10.0.27",
     "gray-matter": "^4.0.2",
+    "markdown-to-jsx": "^7.0.0",
     "next": "latest",
     "next-compose-plugins": "^2.2.0",
     "next-images": "^1.4.1",
