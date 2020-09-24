@@ -8,7 +8,7 @@ import { css } from 'emotion';
 import Page from '../components/common/Page';
 
 import Header from '../components/common/Header';
-import { PostLayout } from '../layouts/PostLayout';
+import { MainLayout } from '../layouts/MainLayout';
 
 import { getFileList } from '../utils/fileSystem';
 
@@ -39,11 +39,11 @@ const Home: NextPage<Props> = (props) => {
         <Page>
             <div className={layoutStyles}>
                 <Header className={headerStyles} />
-                <PostLayout className={postLayoutStyles}>
+                <MainLayout className={postLayoutStyles}>
                     {props.posts?.map(({ date, slug, folder, title }) => (
                         <Post key={slug} meta={{ title, folder, date, slug }} />
                     ))}
-                </PostLayout>
+                </MainLayout>
             </div>
         </Page>
     );

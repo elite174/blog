@@ -1,7 +1,7 @@
 ---
 title: Мета директивы
 folder: learning
-slug: meta-directives
+slug: meta
 date: 09.09.20
 ---
 ## Мета-директивы
