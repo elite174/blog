@@ -2,12 +2,13 @@ import React from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import matter, { GrayMatterFile } from 'gray-matter';
 import fs from 'fs';
-import Markdown from 'markdown-to-jsx';
+
+import { PostLayout } from '../../../layouts/PostLayout';
+import { Content } from '../../../components/post/Content';
 
 import { getFileList, getFilesData } from '../../../utils/fileSystem';
 
 import { PostMeta, PostData } from '../../../typings';
-import { PostLayout } from '../../../layouts/PostLayout';
 
 interface Props {
     readonly post: PostData | null;
@@ -24,9 +25,11 @@ const PostPage: NextPage<Props> = ({ post }) => {
         return null;
     }
 
+    const content = post.content;
+
     return (
         <PostLayout>
-            <Markdown>{post?.content}</Markdown>
+            <Content content={content} />
         </PostLayout>
     );
 };
