@@ -1,6 +1,6 @@
 ---
 title: Загрузка страницы
-folder: learning
+folder: browser
 slug: page-loading
 date: 09.09.20
 ---

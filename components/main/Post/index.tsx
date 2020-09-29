@@ -40,7 +40,7 @@ const titleStyles = css`
     letter-spacing: 2px;
 `;
 
-const dateStyles = css`
+const topicStyles = css`
     ${typography.text16}
     font-weight: 300;
 
@@ -51,12 +51,12 @@ const dateStyles = css`
     color: #999;
 `;
 
-export const Post: FC<Props> = ({ meta: { title, slug, date, folder }, className = '' }) => {
+export const Post: FC<Props> = ({ meta: { title, slug, folder }, className = '' }) => {
     return (
         <NextLink href={getPostUrl(folder, slug)}>
             <a className={cx(containerStyles, className)}>
                 <div className={titleStyles}>{title}</div>
-                <div className={dateStyles}>{date}</div>
+                <div className={topicStyles}>{folder}</div>
             </a>
         </NextLink>
     );

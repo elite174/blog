@@ -29,6 +29,7 @@ const markdownContainerStyles = css`
 
     max-width: 600px;
     margin: auto;
+    padding: 60px 0;
 
     ${commonStyles}
 `;

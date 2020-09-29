@@ -125,10 +125,10 @@ export const StyledBlockquote = styled.blockquote`
     margin: ${getVerticalMargin(2)} 0;
     padding: ${getVerticalMargin(1.5)} ${getVerticalMargin(2.5)};
 
-    box-shadow: 0 0.9px 2.4px rgba(0, 0, 0, 0.017), 0 2px 5.4px rgba(0, 0, 0, 0.024),
-        0 3.5px 9.4px rgba(0, 0, 0, 0.03), 0 5.5px 14.9px rgba(0, 0, 0, 0.035),
-        0 8.5px 23px rgba(0, 0, 0, 0.04), 0 13.3px 35.9px rgba(0, 0, 0, 0.046),
-        0 22px 59.6px rgba(0, 0, 0, 0.053), 0 44px 119px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 0px 0.6px rgba(0, 0, 0, 0.02), 0 0px 1.3px rgba(0, 0, 0, 0.028),
+        0 0px 2.5px rgba(0, 0, 0, 0.035), 0 0px 4.5px rgba(0, 0, 0, 0.042),
+        0 0px 8.4px rgba(0, 0, 0, 0.05), 0 0px 20px rgba(0, 0, 0, 0.07);
+
     border-radius: 4px;
 
     @media ${device.mobileS} {

@@ -3,12 +3,12 @@ import { NextPage, GetStaticProps } from 'next';
 import matter, { GrayMatterFile } from 'gray-matter';
 import fs from 'fs';
 
-import { PostLayout } from '../../../layouts/PostLayout';
-import { Content } from '../../../components/post/Content';
+import { PostLayout } from '../../layouts/PostLayout';
+import { Content } from '../../components/post/Content';
 
-import { getFileList, getFilesData } from '../../../utils/fileSystem';
+import { getFileList, getFilesData } from '../../utils/fileSystem';
 
-import { PostMeta, PostData } from '../../../typings';
+import { PostMeta, PostData } from '../../typings';
 
 interface Props {
     readonly post: PostData | null;

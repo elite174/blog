@@ -4,6 +4,10 @@ import { css, cx } from 'emotion';
 import { typography } from '../../../variables';
 import { ClassNameProps } from '../../../typings';
 
+interface Props extends ClassNameProps {
+    topics: string[];
+}
+
 const headerStyles = css`
     display: flex;
     flex-direction: column;
@@ -73,16 +77,14 @@ const menuItemStyles = css`
     }
 `;
 
-const links = ['Posts', 'learning', 'gallery'];
-
-const Header: FC<ClassNameProps> = ({ className = '' }) => {
+const Header: FC<Props> = ({ className = '', topics }) => {
     return (
         <div className={cx(headerStyles, className)}>
             <div className={nameStyles}>Vlad Lipatov</div>
             <div className={menuStyles}>
-                {links.map((l) => (
-                    <div key={l} className={menuItemStyles}>
-                        {l}
+                {topics.map((topic) => (
+                    <div key={topic} className={menuItemStyles}>
+                        {topic}
                     </div>
                 ))}
             </div>

@@ -1,4 +1,4 @@
-import Document, { DocumentContext } from 'next/document';
+import Document, { DocumentContext, Head, NextScript, Html, Main } from 'next/document';
 import { extractCritical } from 'emotion-server';
 
 export default class MyDocument extends Document {
@@ -18,5 +18,18 @@ export default class MyDocument extends Document {
                 </>
             )
         };
+    }
+
+    render() {
+        return (
+            <Html>
+                <Head />
+                <body>
+                    <Main />
+                    <NextScript />
+                    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+                </body>
+            </Html>
+        );
     }
 }

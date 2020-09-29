@@ -1,6 +1,5 @@
 export enum Folder {
-    learning = 'learning',
-    life = 'life'
+    browser = 'browser'
 }
 
 export interface PostMeta {

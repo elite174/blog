@@ -1,6 +1,6 @@
 ---
 title: Мета директивы
-folder: learning
+folder: browser
 slug: meta
 date: 09.09.20
 ---

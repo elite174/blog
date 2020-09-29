@@ -8,7 +8,7 @@ import { Folder, PostMeta } from '../typings';
 const { readdir } = promises;
 
 export const getFileList = async () => {
-    const folders: Folder[] = [Folder.learning, Folder.life];
+    const folders: Folder[] = [Folder.browser];
     let files: string[] = [];
 
     const getFiles = async (dir: string) => {
